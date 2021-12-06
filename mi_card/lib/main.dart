@@ -47,52 +47,56 @@ class MyApp extends StatelessWidget {
                 color: Colors.blue.shade50,
               ), // Text Style
             ), // Text
-            Container(
+            Card(
               color: Colors.white,
               margin: EdgeInsets.fromLTRB(40, 20, 40, 5),
-              padding: EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.phone,
-                    color: Colors.blue.shade700,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    "010-8697-2046",
-                    style: TextStyle(
-                      color: Colors.blue.shade900,
-                      fontFamily: 'Cafe24SsurroundAir',
-                      fontSize: 15,
+              child: Padding(
+                padding: EdgeInsets.all(10),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.phone,
+                      color: Colors.blue.shade700,
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "010-8697-2046",
+                      style: TextStyle(
+                        color: Colors.blue.shade900,
+                        fontFamily: 'Cafe24SsurroundAir',
+                        fontSize: 15,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-            Container(
-              color: Colors.white,
-              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 40),
-              padding: EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.email,
-                    color: Colors.blue.shade900,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    "jinhlee19@gmail.com",
-                    style: TextStyle(
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                color: Colors.white,
+                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 40),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.email,
                       color: Colors.blue.shade900,
-                      fontFamily: 'Cafe24SsurroundAir',
-                      fontSize: 15,
                     ),
-                  )
-                ],
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "jinhlee19@gmail.com",
+                      style: TextStyle(
+                        color: Colors.blue.shade900,
+                        fontFamily: 'Cafe24SsurroundAir',
+                        fontSize: 15,
+                      ),
+                    )
+                  ],
+                ),
               ),
             )
           ]), // Widget, Column
