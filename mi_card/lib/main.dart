@@ -34,31 +34,31 @@ class MyApp extends StatelessWidget {
 
             // #4 전체 너비 변화
             // 개별 입력 white Container 주석참고
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Container(
                 // single child widget (multi와 구분)
-                color: Colors.white,
-                height: 100,
+                color: Colors.red,
+                height: double.infinity,
                 width: 100,
                 // width: double.infinity,
                 child: Text('Hello'),
               ),
-              SizedBox(
-                height: 20.0,
-                width: 20.0,
-                // Row, CrossAxisAlignment 가 stretch,로 잡힐 경우 무시되고 늘어남..
-              ),
+              // SizedBox(
+              //   height: 20.0,
+              //   width: 20.0,
+              //   // Row, CrossAxisAlignment 가 stretch,로 잡힐 경우 무시되고 늘어남..
+              // ),
               Container(
                 width: 100.0,
                 height: 100.0,
+                color: Colors.yellow,
+              ),
+              Container(
+                width: 100.0,
+                height: double.infinity,
                 color: Colors.blue,
-              ),
-              Container(
-                width: 100.0,
-                height: 100.0,
-                color: Colors.red,
               ),
             ],
           ), // column - widget -> list of items
