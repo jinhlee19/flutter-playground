@@ -17,6 +17,9 @@ class MyApp extends StatelessWidget {
               // backgroundImage: NetworkImage("https://via.placeholder.com/100"),
               backgroundImage: AssetImage('images/avatar.png'),
             ),
+            SizedBox(
+              height: 20,
+            ),
             Text(
               "이진혁",
               style: TextStyle(
@@ -24,6 +27,9 @@ class MyApp extends StatelessWidget {
                 fontSize: 30,
                 color: Colors.white,
               ), // Text Style
+            ),
+            SizedBox(
+              height: 3,
             ), // Text
             Text(
               "플러터 & 리액트 공부중",
