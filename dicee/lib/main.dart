@@ -25,7 +25,7 @@ class _DicePageState extends State<DicePage> {
   int leftDiceNumber = 6; // var, dynamic 사용 자제 -> 정적 변수타입 사용.
   int rightDiceNumber = 6;
 
-  // FUNCTION
+  // FUNCTION은 extends State 안에 넣기!
   void changeDiceFace() {
     setState(() {
       leftDiceNumber = Random().nextInt(6) + 1;
