@@ -3,23 +3,30 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(
       MaterialApp(
-        home: Scaffold(
-          backgroundColor: Colors.blue.shade700,
-          appBar: AppBar(
-            title: Text('Ask Me Anything'),
-            backgroundColor: Colors.blue.shade900,
-          ),
-          body: BallPage(),
-        ),
+        home: myApp(),
       ),
     );
 
-class BallPage extends StatefulWidget {
+class myApp extends StatelessWidget {
   @override
-  _BallPageState createState() => _BallPageState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.blue,
+      appBar: AppBar(
+        title: Text('Ask Me Anything'),
+        backgroundColor: Colors.indigo.shade600,
+      ),
+      body: Ball(),
+    );
+  }
 }
 
-class _BallPageState extends State<BallPage> {
+class Ball extends StatefulWidget {
+  @override
+  _BallState createState() => _BallState();
+}
+
+class _BallState extends State<Ball> {
   int ballNumber = 1;
   @override
   Widget build(BuildContext context) {
