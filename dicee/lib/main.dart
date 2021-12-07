@@ -25,6 +25,15 @@ class _DicePageState extends State<DicePage> {
   int leftDiceNumber = 6; // var, dynamic 사용 자제 -> 정적 변수타입 사용.
   int rightDiceNumber = 6;
 
+  // FUNCTION
+  void changeDiceFace() {
+    setState(() {
+      leftDiceNumber = Random().nextInt(6) + 1;
+      rightDiceNumber = Random().nextInt(6) + 1;
+      print('diceNumber = $leftDiceNumber');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -38,11 +47,7 @@ class _DicePageState extends State<DicePage> {
                 // Flat Button Depreciated.대체됨.
                 // required -> onPressed 프로퍼티, 익명함수의 형태 참고
                 onPressed: () {
-                  setState(() {
-                    leftDiceNumber = Random().nextInt(6) + 1;
-                    rightDiceNumber = Random().nextInt(6) + 1;
-                    print('diceNumber = $leftDiceNumber');
-                  });
+                  changeDiceFace(); // function 호출로 변경
                 },
                 child: Image.asset('images/dice$leftDiceNumber.png'),
               ),
@@ -53,11 +58,7 @@ class _DicePageState extends State<DicePage> {
               padding: const EdgeInsets.all(8.0),
               child: TextButton(
                   onPressed: () {
-                    setState(() {
-                      leftDiceNumber = Random().nextInt(6) + 1;
-                      rightDiceNumber = Random().nextInt(6) + 1;
-                      print('diceNumber = $rightDiceNumber');
-                    });
+                    changeDiceFace();
                   },
                   child: Image.asset('images/dice$rightDiceNumber.png')),
             ), // Padding
