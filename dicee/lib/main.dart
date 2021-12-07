@@ -8,10 +8,10 @@ void main() {
         appBar: AppBar(
           title: Text('Dicee'),
           backgroundColor: Colors.red,
-        ),
+        ), // AppBar
         body: DicePage(),
-      ),
-    ),
+      ), // Scaffold
+    ), // MaterialApp
   );
 }
 
@@ -23,18 +23,27 @@ class DicePage extends StatelessWidget {
         children: [
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Image.asset('images/dice1.png'),
-            ),
+              padding: const EdgeInsets.all(8.0),
+              child: TextButton(
+                onPressed: () {
+                  print('Left button got pressed.');
+                },
+                child: Image.asset('images/dice1.png'),
+              ),
+            ), // Padding
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Image.asset('images/dice3.png'),
-            ),
-          ),
-        ],
-      ),
-    );
+              padding: const EdgeInsets.all(8.0),
+              child: TextButton(
+                  onPressed: () {
+                    print('Right button got pressed.');
+                  },
+                  child: Image.asset('images/dice3.png')),
+            ), // Padding
+          ), // Expanded
+        ], // <Widget>[]
+      ), // Row
+    ); // Center
   }
 }
