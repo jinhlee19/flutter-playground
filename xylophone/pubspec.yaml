@@ -9,9 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  english_words: ^4.0.0
   cupertino_icons: ^1.0.4
-  audioplayers: ^0.17.4
+  audioplayers: ^0.20.1
   # Use Audioplayers dependency version 0.17.4 (currently 0.20.1 in 12/08/21)
 
 dev_dependencies:
