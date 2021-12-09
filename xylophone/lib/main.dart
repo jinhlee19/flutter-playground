@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
+// void main() {
+//   runApp(XylophoneApp());
+// } 한줄의 코드만 있을때, 화살표 함수 이용가능.
+
 void main() => runApp(XylophoneApp());
 
 class XylophoneApp extends StatelessWidget {
@@ -11,13 +15,20 @@ class XylophoneApp extends StatelessWidget {
     player.play('note$soundNumber.wav');
   }
 
+  int imageNumber = 1;
+  // 왜 얘가 데이터타입이 되는지 아직 이해가 안감. 나중에 보기**
   Expanded buildKey({Color color, int soundNumber}) {
     return Expanded(
-      child: FlatButton(
+      child: Container(
         color: color,
-        onPressed: () {
-          playSound(soundNumber);
-        },
+        height: 90,
+        child: TextButton(
+          onPressed: () {
+            playSound(soundNumber);
+            imageNumber = soundNumber;
+          },
+          child: null,
+        ),
       ),
     );
   }
@@ -28,19 +39,42 @@ class XylophoneApp extends StatelessWidget {
       home: Scaffold(
         body: SafeArea(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              buildKey(color: Colors.red, soundNumber: 1),
-              buildKey(color: Colors.orange, soundNumber: 2),
-              buildKey(color: Colors.yellow, soundNumber: 3),
-              buildKey(color: Colors.green, soundNumber: 4),
-              buildKey(color: Colors.blue, soundNumber: 5),
-              buildKey(color: Colors.indigo, soundNumber: 6),
-              buildKey(color: Colors.purple, soundNumber: 7),
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextButton(
+                onPressed: () {},
+                child: Image.asset('images/1.png'),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 40),
+                child: Row(
+                  children: <Widget>[
+                    buildKey(color: Colors.red, soundNumber: 1),
+                    buildKey(color: Colors.orange, soundNumber: 2),
+                    buildKey(color: Colors.yellow, soundNumber: 3),
+                    buildKey(color: Colors.green, soundNumber: 4),
+                    buildKey(color: Colors.blue, soundNumber: 5),
+                    buildKey(color: Colors.indigo, soundNumber: 6),
+                    buildKey(color: Colors.purple, soundNumber: 7),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+}
+
+class animalFriends extends StatefulWidget {
+  @override
+  _animalFriendsState createState() => _animalFriendsState();
+}
+
+class _animalFriendsState extends State<animalFriends> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
