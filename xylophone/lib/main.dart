@@ -80,6 +80,15 @@ class _animalFriendsState extends State<animalFriends> {
             ],
           ),
         ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20.0),
+          child: Text(
+            'Xylophone Friend',
+            style: TextStyle(
+              fontSize: 20,
+            ),
+          ),
+        )
       ],
     );
   }
