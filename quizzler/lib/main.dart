@@ -25,6 +25,32 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
+  // scoreKeeper - Variable-type<Data-type>
+
+  List<Icon> scoreKeeper = [
+    // 수업과 달리 'const'를 붙여야 에러가 안남. 왜?**
+    const Icon(
+      Icons.check,
+      color: Colors.green,
+    ),
+    const Icon(
+      Icons.close,
+      color: Colors.red,
+    ),
+    const Icon(
+      Icons.close,
+      color: Colors.red,
+    ),
+    const Icon(
+      Icons.close,
+      color: Colors.red,
+    ),
+    const Icon(
+      Icons.close,
+      color: Colors.red,
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -58,7 +84,14 @@ class _QuizPageState extends State<QuizPage> {
               ),
               child: const Text('True'),
               onPressed: () {
-                //The user picked true.
+                setState(() {
+                  scoreKeeper.add(
+                    const Icon(
+                      Icons.check,
+                      color: Colors.green,
+                    ), // Icon
+                  ); // add(); Ends
+                }); //The user picked true.
               },
             ),
           ),
@@ -73,35 +106,14 @@ class _QuizPageState extends State<QuizPage> {
                 textStyle: const TextStyle(fontSize: 20.0),
               ),
               child: const Text('False'),
-              onPressed: () {
-                //The user picked false.
-              },
+              onPressed: () {},
             ),
           ),
         ),
         Row(
-          children: const <Widget>[
-            Icon(
-              Icons.check,
-              color: Colors.green,
-            ),
-            Icon(
-              Icons.close,
-              color: Colors.red,
-            ),
-            Icon(
-              Icons.close,
-              color: Colors.red,
-            ),
-            Icon(
-              Icons.close,
-              color: Colors.red,
-            ),
-            Icon(
-              Icons.close,
-              color: Colors.red,
-            ),
-          ],
+          children: scoreKeeper,
+          // 기본이 dynamic이므로 데이터타입 명시해야함.
+          // Syntax - List<String> myString = ['a','b','c']; -> "<String>"으로 설정
         )
       ],
     );
