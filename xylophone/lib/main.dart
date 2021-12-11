@@ -1,3 +1,5 @@
+// 키에 따라 이미지 변경 #1
+
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
@@ -48,7 +50,9 @@ class _animalFriendsState extends State<animalFriends> {
         child: TextButton(
           onPressed: () {
             playSound(soundNumber);
-            imageNumber = soundNumber;
+            setState(() {
+              imageNumber = soundNumber;
+            });
           },
           child: null,
         ),

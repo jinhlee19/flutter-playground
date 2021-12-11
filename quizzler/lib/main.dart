@@ -32,10 +32,11 @@ class _QuizPageState extends State<QuizPage> {
   List<String> questions = [
     'You can lead a cow down stairs but not up stairs.',
     'Approximately one quarter of human bones are in the feet.',
-    'Approximately one quarter of human bones are in the feet.',
-    'Approximately one quarter of human bones are in the feet.',
     'A slug\'s blood is green.'
   ];
+  // Checking User Answers #1
+  List<bool> answers = [false, true, true];
+
   int questionNumber = 0;
 
   @override
@@ -45,6 +46,7 @@ class _QuizPageState extends State<QuizPage> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         Expanded(
+          // ***** 텍스트 위치 *****
           flex: 5,
           child: Padding(
             padding: const EdgeInsets.all(10.0),
@@ -52,6 +54,7 @@ class _QuizPageState extends State<QuizPage> {
               child: Text(
                 // 'testing text',
                 questions[questionNumber],
+                // setState에서 받은 변경값이 마킹되어 rebuild 를 트리거한다.
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 25.0,
@@ -63,6 +66,7 @@ class _QuizPageState extends State<QuizPage> {
         ),
         Expanded(
           child: Padding(
+            // ***** 정답 버튼 *****
             padding: const EdgeInsets.all(15.0),
             child: TextButton(
               style: TextButton.styleFrom(
@@ -72,22 +76,24 @@ class _QuizPageState extends State<QuizPage> {
               ),
               child: const Text('True'),
               onPressed: () {
-                print(questionNumber);
                 setState(() {
+                  bool correctAnswer = answers[questionNumber];
+                  // Checking User Answer #2 - True Version of If Else !!
+                  if (correctAnswer == true) {
+                    print('user got it right!');
+                  } else {
+                    print('user got it wrong');
+                  }
                   questionNumber++;
-                  // scoreKeeper.add(
-                  //   const Icon(
-                  //     Icons.check,
-                  //     color: Colors.green,
-                  //   ), // Icon
-                  // ); // add(); Ends
                 }); //The user picked true.
+                print(questionNumber);
               },
             ),
           ),
         ),
         Expanded(
           child: Padding(
+            // ***** 오답 버튼 *****
             padding: const EdgeInsets.all(15.0),
             child: TextButton(
               style: TextButton.styleFrom(
@@ -98,7 +104,14 @@ class _QuizPageState extends State<QuizPage> {
               child: const Text('False'),
               onPressed: () {
                 setState(() {
-                  questionNumber++; // rebuild 를 일으켜서 52열의 text 해당부분 questions[questionNumber]로 업데이트 시킨다.
+                  // Checking User Answer #2 - False Version of If Else !!
+                  bool correctAnswer = answers[questionNumber];
+                  if (correctAnswer == false) {
+                    print('user got it right!');
+                  } else {
+                    print('user got it wrong');
+                  }
+                  questionNumber++; // text 변경이 되는 부분 questions[questionNumber]를 업데이트 -> 마킹할 값으로 이동.
                 });
                 print(questionNumber);
               },
