@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'question.dart';
 
 void main() => runApp(Quizzler());
 
@@ -26,16 +27,23 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   // scoreKeeper - Variable-type<Data-type>
-
   List<Icon> scoreKeeper = [];
 
-  List<String> questions = [
-    'You can lead a cow down stairs but not up stairs.',
-    'Approximately one quarter of human bones are in the feet.',
-    'A slug\'s blood is green.'
+  // List<String> questions = [
+  //   'You can lead a cow down stairs but not up stairs.',
+  //   'Approximately one quarter of human bones are in the feet.',
+  //   'A slug\'s blood is green.'
+  // ];
+  // List<bool> answers = [false, true, true];
+  // Question q1 = Question(q: 'You can lead a cow down stairs but not up stairs.', a: false);
+
+  List<Question> questionBank = [
+    Question(q: 'You can lead a cow down stairs but not up stairs.', a: false),
+    Question(
+        q: 'Approximately one quarter of human bones are in the feet.',
+        a: true),
+    Question(q: 'A slug\'s blood is green.', a: true),
   ];
-  // Checking User Answers #1
-  List<bool> answers = [false, true, true];
 
   int questionNumber = 0;
 
@@ -53,8 +61,10 @@ class _QuizPageState extends State<QuizPage> {
             child: Center(
               child: Text(
                 // 'testing text',
-                questions[questionNumber],
-                // setState에서 받은 변경값이 마킹되어 rebuild 를 트리거한다.
+                questionBank[questionNumber].questionText,
+                // Question Class 사용한 index ***
+                //questions[questionNumber],
+                // setState 에서 받은 변경값이 마킹되어 rebuild 를 트리거한다.
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 25.0,
@@ -77,7 +87,8 @@ class _QuizPageState extends State<QuizPage> {
               child: const Text('True'),
               onPressed: () {
                 setState(() {
-                  bool correctAnswer = answers[questionNumber];
+                  bool correctAnswer =
+                      questionBank[questionNumber].questionAnswer;
                   // Checking User Answer #2 - True Version of If Else !!
                   if (correctAnswer == true) {
                     print('user got it right!');
@@ -105,7 +116,8 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 setState(() {
                   // Checking User Answer #2 - False Version of If Else !!
-                  bool correctAnswer = answers[questionNumber];
+                  bool correctAnswer =
+                      questionBank[questionNumber].questionAnswer;
                   if (correctAnswer == false) {
                     print('user got it right!');
                   } else {
