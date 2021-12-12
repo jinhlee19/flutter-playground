@@ -3,6 +3,7 @@ import 'package:quizzler_flutter_flearner/question.dart';
 class QuizBrain {
   // QuizBrain class 만 오직 프라이벳화된 _questionBank에 접근할 수 있게 한다. (#2 Encapsulation)
   // final 자동 추가됨*
+  int _questionNumber = 0;
   final List<Question> _questionBank = [
     Question('Some cats are actually allergic to humans', true),
     Question('You can lead a cow down stairs but not up stairs.', false),
@@ -31,11 +32,21 @@ class QuizBrain {
         true),
   ];
 
-  String getQuestionText(int questionNumber) {
-    return _questionBank[questionNumber].questionText;
+  void nextQuestion() {
+    if (_questionNumber < _questionBank.length) {
+      _questionNumber++;
+    }
+    print(_questionNumber);
+    print(_questionBank.length);
   }
 
-  bool getQuestionAnswer(int questionNumber) {
-    return _questionBank[questionNumber].questionAnswer;
+  //
+  // questionNumber 에 _ 붙여주고 매개변수 arg 삭제
+  String getQuestionText() {
+    return _questionBank[_questionNumber].questionText;
+  }
+
+  bool getQuestionAnswer() {
+    return _questionBank[_questionNumber].questionAnswer;
   }
 }

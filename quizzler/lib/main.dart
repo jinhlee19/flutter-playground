@@ -49,7 +49,8 @@ class _QuizPageState extends State<QuizPage> {
   //   Question(q: 'A slug\'s blood is green.', a: true),
   // ];
 
-  int questionNumber = 0;
+  // quiz_brain 으로 이동 - (Encapsulation)
+  // int questionNumber = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +66,8 @@ class _QuizPageState extends State<QuizPage> {
             child: Center(
               child: Text(
                 // 'testing text',
-                quizBrain.getQuestionText(questionNumber),
+                // quizBrain.getQuestionText(questionNumber),
+                quizBrain.getQuestionText(),
                 // Question Class 사용한 index ***
                 //questions[questionNumber],
                 // setState 에서 받은 변경값이 마킹되어 rebuild 를 트리거한다.
@@ -92,8 +94,7 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 // bool correctAnswer = quizBrain.questionBank[question] = true;
                 // bool correctAnswer =quizBrain.questionBank[questionNumber].questionAnswer;
-                bool correctAnswer =
-                    quizBrain.getQuestionAnswer(questionNumber);
+                bool correctAnswer = quizBrain.getQuestionAnswer();
                 // Checking User Answer #2 - True Version of If Else !!
                 if (correctAnswer == true) {
                   print('user got it right!');
@@ -102,9 +103,10 @@ class _QuizPageState extends State<QuizPage> {
                 }
 
                 setState(() {
-                  questionNumber++;
+                  quizBrain.nextQuestion();
+                  // questionNumber++;
                 }); //The user picked true.
-                print(questionNumber);
+                // print(questionNumber);
               },
             ),
           ),
@@ -124,8 +126,8 @@ class _QuizPageState extends State<QuizPage> {
                 // Checking User Answer #2 - False Version of If Else !!
                 // bool correctAnswer = quizBrain.questionBank[questionNumber].questionAnswer;
                 // Encapsulation 을 통해서 main.dart 가 quizBrain 객체의 값을 임의로 설정할수 없게함 -> 코드의 안전성
-                bool correctAnswer =
-                    quizBrain.getQuestionAnswer(questionNumber);
+                // bool correctAnswer =quizBrain.getQuestionAnswer(questionNumber);
+                bool correctAnswer = quizBrain.getQuestionAnswer();
                 if (correctAnswer == false) {
                   print('user got it right!');
                 } else {
@@ -133,9 +135,10 @@ class _QuizPageState extends State<QuizPage> {
                 }
 
                 setState(() {
-                  questionNumber++; // text 변경이 되는 부분 questions[questionNumber]를 업데이트 -> 마킹할 값으로 이동.
+                  quizBrain.nextQuestion();
+                  // questionNumber++; // text 변경이 되는 부분 questions[questionNumber]를 업데이트 -> 마킹할 값으로 이동.
                 });
-                print(questionNumber);
+                // print(questionNumber);
               },
             ),
           ),
