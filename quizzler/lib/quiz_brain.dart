@@ -1,7 +1,9 @@
 import 'package:quizzler_flutter_flearner/question.dart';
 
 class QuizBrain {
-  List<Question> questionBank = [
+  // QuizBrain class 만 오직 프라이벳화된 _questionBank에 접근할 수 있게 한다. (#2 Encapsulation)
+  // final 자동 추가됨*
+  final List<Question> _questionBank = [
     Question('Some cats are actually allergic to humans', true),
     Question('You can lead a cow down stairs but not up stairs.', false),
     Question('Approximately one quarter of human bones are in the feet.', true),
@@ -28,4 +30,12 @@ class QuizBrain {
         'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
         true),
   ];
+
+  String getQuestionText(int questionNumber) {
+    return _questionBank[questionNumber].questionText;
+  }
+
+  bool getQuestionAnswer(int questionNumber) {
+    return _questionBank[questionNumber].questionAnswer;
+  }
 }
