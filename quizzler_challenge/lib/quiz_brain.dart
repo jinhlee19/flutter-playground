@@ -46,7 +46,7 @@ class QuizBrain {
   }
 
 //TODO: Step 3 Part A - Create a method called isFinished() here that checks to see if we have reached the last question. It should return (have an output) true if we've reached the last question and it should return false if we're not there yet.
-  // isFinished - bool type Constructor ***
+  // isFinished - bool type method ***
   // alert 을 위해 true/false 로 문제의 끝을 확인
   // 끝번호에 도달했을 때 _questionNumber 는 0부터 시작한 번째 수 -> _questionBank.length는 그냥 문제 갯수 그 자체이므로 0을 카운트 한 수와 비교하기 위해 -1.
   // _questionBank.length _전체 개수이므로 항상 문제 max 고정값 정수를 유지함. _questionNumber는 항상 현재값 -1.
