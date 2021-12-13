@@ -25,6 +25,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
+  rflutter_alert: ^2.0.4
   #TODO: Step 1 - Add the rFlutter Alert package as a dependency here and use "Packages get".
 
 dev_dependencies:
