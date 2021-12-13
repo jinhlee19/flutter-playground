@@ -52,6 +52,26 @@ class _QuizPageState extends State<QuizPage> {
   // quiz_brain 으로 이동 - (Encapsulation)
   // int questionNumber = 0;
 
+  // #10.12 - scoreKeeper Update
+  void checkAnswer(bool userPickedAnswer) {
+    bool correctAnswer = quizBrain.getQuestionAnswer();
+    // '==' 는 check equality. Change:: correctAnswer -> userPickedAnswer, true ->correctAnswer
+    if (userPickedAnswer == correctAnswer) {
+      scoreKeeper.add(const Icon(
+        Icons.check,
+        color: Colors.green,
+      ));
+    } else {
+      scoreKeeper.add(const Icon(
+        Icons.close,
+        color: Colors.red,
+      ));
+    }
+    setState(() {
+      quizBrain.nextQuestion();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -82,7 +102,7 @@ class _QuizPageState extends State<QuizPage> {
         ),
         Expanded(
           child: Padding(
-            // ***** 정답 버튼 *****
+            // ***** true 버튼 *****
             padding: const EdgeInsets.all(15.0),
             child: TextButton(
               style: TextButton.styleFrom(
@@ -92,28 +112,31 @@ class _QuizPageState extends State<QuizPage> {
               ),
               child: const Text('True'),
               onPressed: () {
-                // bool correctAnswer = quizBrain.questionBank[question] = true;
-                // bool correctAnswer =quizBrain.questionBank[questionNumber].questionAnswer;
-                bool correctAnswer = quizBrain.getQuestionAnswer();
-                // Checking User Answer #2 - True Version of If Else !!
-                if (correctAnswer == true) {
-                  print('user got it right!');
-                } else {
-                  print('user got it wrong');
-                }
+                checkAnswer(true);
 
-                setState(() {
-                  quizBrain.nextQuestion();
-                  // questionNumber++;
-                }); //The user picked true.
-                // print(questionNumber);
+                // // bool correctAnswer = quizBrain.questionBank[question] = true;
+                // // bool correctAnswer =quizBrain.questionBank[questionNumber].questionAnswer;
+                // bool correctAnswer = quizBrain.getQuestionAnswer();
+                // // Checking User Answer #2 - True Version of If Else !!
+                // if (correctAnswer == true) {
+                //   print('user got it right!');
+                // } else {
+                //   print('user got it wrong');
+                // }
+                //
+                // setState(() {
+                //   quizBrain.nextQuestion();
+                //   // questionNumber++;
+                // }); //The user picked true.
+                // // print(questionNumber);
+                // // ** bool checkAnswer 로 이동
               },
             ),
           ),
         ),
         Expanded(
           child: Padding(
-            // ***** 오답 버튼 *****
+            // ***** false 버튼 *****
             padding: const EdgeInsets.all(15.0),
             child: TextButton(
               style: TextButton.styleFrom(
@@ -123,21 +146,22 @@ class _QuizPageState extends State<QuizPage> {
               ),
               child: const Text('False'),
               onPressed: () {
-                // Checking User Answer #2 - False Version of If Else !!
-                // bool correctAnswer = quizBrain.questionBank[questionNumber].questionAnswer;
-                // Encapsulation 을 통해서 main.dart 가 quizBrain 객체의 값을 임의로 설정할수 없게함 -> 코드의 안전성
-                // bool correctAnswer =quizBrain.getQuestionAnswer(questionNumber);
-                bool correctAnswer = quizBrain.getQuestionAnswer();
-                if (correctAnswer == false) {
-                  print('user got it right!');
-                } else {
-                  print('user got it wrong');
-                }
-
-                setState(() {
-                  quizBrain.nextQuestion();
-                  // questionNumber++; // text 변경이 되는 부분 questions[questionNumber]를 업데이트 -> 마킹할 값으로 이동.
-                });
+                checkAnswer(false);
+                // // Checking User Answer #2 - False Version of If Else !!
+                // // bool correctAnswer = quizBrain.questionBank[questionNumber].questionAnswer;
+                // // Encapsulation 을 통해서 main.dart 가 quizBrain 객체의 값을 임의로 설정할수 없게함 -> 코드의 안전성
+                // // bool correctAnswer =quizBrain.getQuestionAnswer(questionNumber);
+                // bool correctAnswer = quizBrain.getQuestionAnswer();
+                // if (correctAnswer == false) {
+                //   print('user got it right!');
+                // } else {
+                //   print('user got it wrong');
+                // }
+                //
+                // setState(() {
+                //   quizBrain.nextQuestion();
+                //   // questionNumber++; // text 변경이 되는 부분 questions[questionNumber]를 업데이트 -> 마킹할 값으로 이동.
+                // });
                 // print(questionNumber);
               },
             ),
