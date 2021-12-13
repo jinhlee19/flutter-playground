@@ -25,6 +25,13 @@ class _StoryPageState extends State<StoryPage> {
     return Scaffold(
       body: Container(
         //TODO: Step 1 - Add background.png to this Container as a background image.
+
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("images/background.png"),
+          ),
+        ),
+
         padding: const EdgeInsets.symmetric(vertical: 50.0, horizontal: 15.0),
         constraints: const BoxConstraints.expand(),
         child: SafeArea(
@@ -72,14 +79,13 @@ class _StoryPageState extends State<StoryPage> {
                     //Choice 2 made by user.
                     //TODO: Step 19 - Call the nextStory() method from storyBrain and pass the number 2 as the choice made by the user.
                   },
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.blue
-                  ),
+                  style: TextButton.styleFrom(backgroundColor: Colors.blue),
                   child: const Text(
                     //TODO: Step 14 - Use the storyBrain to get the text for choice 2.
                     'Choice 2',
                     style: TextStyle(
                       fontSize: 20.0,
+                      color: Colors.white,
                     ),
                   ),
                 ),
