@@ -43,15 +43,17 @@ class _QuizPageState extends State<QuizPage> {
       //TODO: Step 4 Part D - empty out the scoreKeeper.
       //TODO: Step 5 - If we've not reached the end, ELSE do the answer checking steps below 👇
       if (quizBrain.isFinished() == true) {
+        // 알람 - rFlutter
         Alert(
                 context: context,
                 title: 'Finished',
                 desc: 'You\'ve reached the end of the quiz.')
             .show();
+        // 초기화 from quizBrain
         quizBrain.reset();
         scoreKeeper = [];
       } else {
-        // check
+        // 답을 확인 -> 정, 오답을 아이콘으로 저장
         if (userPickedAnswer == correctAnswer) {
           scoreKeeper.add(Icon(
             Icons.check,
