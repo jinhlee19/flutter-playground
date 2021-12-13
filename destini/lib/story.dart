@@ -12,5 +12,11 @@ class Story {
   String choice1;
   String choice2;
   // String storyTitle, choice1, choice2;
-  Story(this.storyTitle, this.choice1, this.choice2); //Constructor
+  Story(
+      {required this.storyTitle,
+      required this.choice1,
+      required this.choice2}); //Constructor
+  String getStoryTitle() {
+    return storyTitle;
+  }
 }

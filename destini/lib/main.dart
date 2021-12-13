@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-
-//TODO: Step 15 - Run the app and see if you can see the screen update with the first story. Delete this TODO if it looks as you expected.
-
-//TODO: Step 9 - Create a new storyBrain object from the StoryBrain class.
 import 'story_brain.dart';
-
-StoryBrain storyBrain = StoryBrain();
+//TODO: Step 15 - Run the app and see if you can see the screen update with the first story. Delete this TODO if it looks as you expected.
 
 void main() => runApp(Destini());
 
@@ -19,10 +14,13 @@ class Destini extends StatelessWidget {
 }
 
 class StoryPage extends StatefulWidget {
+  @override
   _StoryPageState createState() => _StoryPageState();
 }
 
 class _StoryPageState extends State<StoryPage> {
+  //TODO: Step 9 - Create a new storyBrain object from the StoryBrain class.
+  StoryBrain storyBrain = StoryBrain();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,14 +40,15 @@ class _StoryPageState extends State<StoryPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              const Expanded(
+              // 오류 -> 기존 const 삭제 -> TextStyle ****
+              Expanded(
                 flex: 12,
                 child: Center(
                   child: Text(
                     //TODO: Step 10 - use the storyBrain to get the first story title and display it in this Text Widget.
                     // 'Story text will go here.'
                     storyBrain.getStory(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 25.0,
                     ),
                   ),
@@ -63,10 +62,11 @@ class _StoryPageState extends State<StoryPage> {
                     //TODO: Step 18 - Call the nextStory() method from storyBrain and pass the number 1 as the choice made by the user.
                   },
                   color: Colors.red,
-                  child: const Text(
+                  child: Text(
                     //TODO: Step 13 - Use the storyBrain to get the text for choice 1.
-                    'Choice 1',
-                    style: TextStyle(
+                    storyBrain.getChoice1(),
+                    // 'Choice 1',
+                    style: const TextStyle(
                       fontSize: 20.0,
                     ),
                   ),
@@ -85,10 +85,11 @@ class _StoryPageState extends State<StoryPage> {
                     //TODO: Step 19 - Call the nextStory() method from storyBrain and pass the number 2 as the choice made by the user.
                   },
                   style: TextButton.styleFrom(backgroundColor: Colors.blue),
-                  child: const Text(
+                  child: Text(
                     //TODO: Step 14 - Use the storyBrain to get the text for choice 2.
-                    'Choice 2',
-                    style: TextStyle(
+                    storyBrain.getChoice2(),
+                    // 'Choice 2',
+                    style: const TextStyle(
                       fontSize: 20.0,
                       color: Colors.white,
                     ),
