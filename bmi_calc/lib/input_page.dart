@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const bottomContainterHeight = 80.0;
 const activeCardColor = Color(0xFF1d1e33);
-const bottomContainerColor = Color(0xFFEB1555)
+const bottomContainerColor = Color(0xFFEB1555);
+
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
 
@@ -24,6 +26,25 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: ReusableCard(
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Icon(
+                          FontAwesomeIcons.mars,
+                          size: 80,
+                        ),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        Text(
+                          'MALE',
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            color: Color(0xFF8D8E98),
+                          ),
+                        )
+                      ],
+                    ),
                     colour: activeCardColor,
                   ),
                 ),
@@ -70,11 +91,14 @@ class _InputPageState extends State<InputPage> {
 
 class ReusableCard extends StatelessWidget {
   final Color colour;
-  ReusableCard({Key? key, required this.colour}) : super(key: key);
+  final Widget? cardChild; // from flearner
 
+  const ReusableCard({Key? key, required this.colour, this.cardChild})
+      : super(key: key); // from flearner
   @override
   Widget build(BuildContext context) {
     return Container(
+      child: cardChild,
       margin: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: colour,
