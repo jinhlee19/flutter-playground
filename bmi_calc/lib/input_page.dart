@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+const bottomContainterHeight = 80.0;
+const activeCardColor = Color(0xFF1d1e33);
+const bottomContainerColor = Color(0xFFEB1555)
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
 
@@ -21,12 +24,12 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: ReusableCard(
-                    colour: Color(0xFF1d1e33),
+                    colour: activeCardColor,
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    colour: Color(0xFF1d1e33),
+                    colour: activeCardColor,
                   ),
                 ),
               ],
@@ -34,7 +37,7 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: ReusableCard(
-              colour: Color(0xFF1d1e33),
+              colour: activeCardColor,
             ),
           ),
           Expanded(
@@ -42,16 +45,22 @@ class _InputPageState extends State<InputPage> {
               children: [
                 Expanded(
                   child: ReusableCard(
-                    colour: Color(0xFF1d1e33),
+                    colour: activeCardColor,
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    colour: Color(0xFF1d1e33),
+                    colour: activeCardColor,
                   ),
                 ),
               ],
             ),
+          ),
+          Container(
+            color: bottomContainerColor,
+            margin: const EdgeInsets.only(top: 10.0),
+            width: double.infinity,
+            height: bottomContainterHeight,
           ),
         ],
       ),
@@ -61,8 +70,7 @@ class _InputPageState extends State<InputPage> {
 
 class ReusableCard extends StatelessWidget {
   final Color colour;
-  // final이 colour를 immutable하게 만들어준다.
-  ReusableCard({required this.colour});
+  ReusableCard({Key? key, required this.colour}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
