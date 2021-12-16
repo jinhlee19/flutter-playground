@@ -18,33 +18,7 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  // Ternary Operator #1 - error -> flearner
-  // late Gender selectedGender;
   Gender selectedGender = Gender.male;
-
-  // Color maleCardColor = inactiveCardColor;
-  // Color femaleCardColor = inactiveCardColor;
-  //
-  // void updateColor(Gender selectedGender) {
-  //   //male
-  //   if (selectedGender == Gender.male) {
-  //     if (maleCardColor == inactiveCardColor) {
-  //       maleCardColor = activeCardColor;
-  //       femaleCardColor = inactiveCardColor;
-  //     } else {
-  //       maleCardColor = inactiveCardColor;
-  //     }
-  //   }
-  //   // female
-  //   if (selectedGender == Gender.female) {
-  //     if (femaleCardColor == inactiveCardColor) {
-  //       femaleCardColor = activeCardColor;
-  //       maleCardColor = inactiveCardColor;
-  //     } else {
-  //       femaleCardColor = inactiveCardColor;
-  //     }
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -61,8 +35,6 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        // updateColor(Gender.male);
-                        // Ternary Operator #2
                         selectedGender = Gender.male;
                       });
                       print("male card was pressed.");
@@ -70,7 +42,6 @@ class _InputPageState extends State<InputPage> {
                     child: ReusableCard(
                       cardChild: IconContent(
                           icon: FontAwesomeIcons.mars, label: 'MALE'),
-                      // colour: maleCardColor,
                       colour: selectedGender == Gender.male
                           ? activeCardColor
                           : inactiveCardColor,
