@@ -87,8 +87,10 @@ class _InputPageState extends State<InputPage> {
                     ],
                   ),
                   SliderTheme(
-                    // Todo #9-10
+                    // Todo # 10
                     data: SliderTheme.of(context).copyWith(
+                      trackHeight: 1,
+                      inactiveTrackColor: Color(0xFF8D8E98),
                       activeTrackColor: Colors.white,
                       thumbColor: Color(0xFFEB1555),
                       overlayColor: Color(0x29EB1555),
@@ -102,7 +104,6 @@ class _InputPageState extends State<InputPage> {
                       min: 50.0,
                       max: 220.0,
                       // activeColor: Colors.white, // overrides Theme ThumbColor
-                      inactiveColor: Color(0xFF8D8E98),
                       onChanged: (double newValue) {
                         setState(() {
                           //Todo # 9-9
