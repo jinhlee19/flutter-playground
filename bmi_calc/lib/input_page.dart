@@ -16,7 +16,10 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender = Gender.male;
-  // Todo # 9-8-1
+  // Todo # 9-8-1, 11-2
+  int height = 180;
+  int weight = 74;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,9 +121,38 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: Row(
+              //TODO 11-1
               children: [
                 Expanded(
                   child: ReusableCard(
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'WEIGHT',
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          '74',
+                          style: kNumberTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(),
+                            SizedBox(width: 10),
+                            FloatingActionButton(
+                              backgroundColor: Color(0xFF4C4f5E),
+                              child: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
+                              onPressed: null,
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
                     colour: kActiveCardColor,
                   ),
                 ),
@@ -142,6 +174,24 @@ class _InputPageState extends State<InputPage> {
       ),
     );
   }
+}
 
-  int height = 180;
+class RoundIconButton extends StatelessWidget {
+  RoundIconButton({required this.child});
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      elevation: 6,
+      shape: CircleBorder(),
+      fillColor: Color(0xFF4C4f5E),
+      constraints: BoxConstraints.tightFor(
+        width: 56.0,
+        height: 56.0,
+      ),
+      child: child,
+      onPressed: () {},
+    );
+  }
 }
