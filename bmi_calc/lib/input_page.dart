@@ -3,10 +3,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
 
-const bottomContainterHeight = 80.0;
+const bottomContainerHeight = 80.0;
 const activeCardColor = Color(0xFF1d1e33);
 const inactiveCardColor = Color(0xFF111328);
 const bottomContainerColor = Color(0xFFEB1555);
+
+enum Gender { male, female }
 
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
@@ -16,29 +18,33 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Color maleCardColor = inactiveCardColor;
-  Color femaleCardColor = inactiveCardColor;
+  // Ternary Operator #1 - error -> flearner
+  // late Gender selectedGender;
+  Gender selectedGender = Gender.male;
 
-  void updateColor(int gender) {
-    //male
-    if (gender == 1) {
-      if (maleCardColor == inactiveCardColor) {
-        maleCardColor = activeCardColor;
-        femaleCardColor = inactiveCardColor;
-      } else {
-        maleCardColor = inactiveCardColor;
-      }
-    }
-    // female
-    if (gender == 2) {
-      if (femaleCardColor == inactiveCardColor) {
-        femaleCardColor = activeCardColor;
-        maleCardColor = inactiveCardColor;
-      } else {
-        femaleCardColor = inactiveCardColor;
-      }
-    }
-  }
+  // Color maleCardColor = inactiveCardColor;
+  // Color femaleCardColor = inactiveCardColor;
+  //
+  // void updateColor(Gender selectedGender) {
+  //   //male
+  //   if (selectedGender == Gender.male) {
+  //     if (maleCardColor == inactiveCardColor) {
+  //       maleCardColor = activeCardColor;
+  //       femaleCardColor = inactiveCardColor;
+  //     } else {
+  //       maleCardColor = inactiveCardColor;
+  //     }
+  //   }
+  //   // female
+  //   if (selectedGender == Gender.female) {
+  //     if (femaleCardColor == inactiveCardColor) {
+  //       femaleCardColor = activeCardColor;
+  //       maleCardColor = inactiveCardColor;
+  //     } else {
+  //       femaleCardColor = inactiveCardColor;
+  //     }
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -55,16 +61,19 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updateColor(1);
+                        // updateColor(Gender.male);
+                        // Ternary Operator #2
+                        selectedGender = Gender.male;
                       });
-                      print("Male card was pressed.");
+                      print("male card was pressed.");
                     },
                     child: ReusableCard(
                       cardChild: IconContent(
-                        icon: FontAwesomeIcons.mars,
-                        label: 'MALE',
-                      ),
-                      colour: maleCardColor,
+                          icon: FontAwesomeIcons.mars, label: 'MALE'),
+                      // colour: maleCardColor,
+                      colour: selectedGender == Gender.male
+                          ? activeCardColor
+                          : inactiveCardColor,
                     ),
                   ),
                 ),
@@ -72,19 +81,18 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updateColor(2);
-                        print("Male card was pressed.");
+                        selectedGender = Gender.female;
                       });
                     },
                     child: ReusableCard(
                       cardChild: IconContent(
-                        icon: FontAwesomeIcons.venus,
-                        label: 'FEMALE',
-                      ),
-                      colour: femaleCardColor,
+                          icon: FontAwesomeIcons.venus, label: 'FEMALE'),
+                      colour: selectedGender == Gender.female
+                          ? activeCardColor
+                          : inactiveCardColor,
                     ),
                   ),
-                ),
+                )
               ],
             ),
           ),
@@ -113,7 +121,7 @@ class _InputPageState extends State<InputPage> {
             color: bottomContainerColor,
             margin: const EdgeInsets.only(top: 10.0),
             width: double.infinity,
-            height: bottomContainterHeight,
+            height: bottomContainerHeight,
           ),
         ],
       ),
