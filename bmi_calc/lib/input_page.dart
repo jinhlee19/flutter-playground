@@ -19,6 +19,7 @@ class _InputPageState extends State<InputPage> {
   // Todo # 9-8-1, 11-2
   int height = 180;
   int weight = 74;
+  int age = 20;
 
   @override
   Widget build(BuildContext context) {
@@ -133,15 +134,29 @@ class _InputPageState extends State<InputPage> {
                           style: kLabelTextStyle,
                         ),
                         Text(
-                          '74',
+                          weight.toString(),
                           style: kNumberTextStyle,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            RoundIconButton(icon: FontAwesomeIcons.minus),
+                            RoundIconButton(
+                                icon: FontAwesomeIcons.minus,
+                                passValue: () {
+                                  setState(() {
+                                    weight--;
+                                    // print(weight);
+                                  });
+                                }),
                             SizedBox(width: 10),
-                            RoundIconButton(icon: FontAwesomeIcons.plus),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              passValue: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                            ),
                           ],
                         ),
                       ],
@@ -151,6 +166,41 @@ class _InputPageState extends State<InputPage> {
                 ),
                 Expanded(
                   child: ReusableCard(
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'AGE',
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          age.toString(),
+                          style: kNumberTextStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RoundIconButton(
+                                icon: FontAwesomeIcons.minus,
+                                passValue: () {
+                                  setState(() {
+                                    age--;
+                                  });
+                                }),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            RoundIconButton(
+                                icon: FontAwesomeIcons.plus,
+                                passValue: () {
+                                  setState(() {
+                                    age++;
+                                  });
+                                }),
+                          ],
+                        )
+                      ],
+                    ),
                     colour: kActiveCardColor,
                   ),
                 ),
@@ -170,21 +220,22 @@ class _InputPageState extends State<InputPage> {
 }
 
 class RoundIconButton extends StatelessWidget {
-  RoundIconButton({required this.icon});
+  RoundIconButton({required this.icon, required this.passValue});
   final IconData icon;
-
+  final VoidCallback passValue;
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
-      elevation: 6,
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4f5E),
+      child: Icon(icon),
+      onPressed: passValue,
       constraints: BoxConstraints.tightFor(
         width: 56.0,
         height: 56.0,
       ),
-      child: Icon(icon),
-      onPressed: () {},
+      shape: CircleBorder(),
+      // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      fillColor: Color(0xFF4C4f5E),
+      elevation: 6,
     );
   }
 }
