@@ -16,6 +16,7 @@ class Screen1 extends StatelessWidget {
           ),
           child: Text('Go Forwards To Screen 2'),
           onPressed: () {
+            // Todo 1: Navigator.push -> context & route
             Navigator.push(
               context,
               MaterialPageRoute(

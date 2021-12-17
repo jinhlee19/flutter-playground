@@ -15,6 +15,7 @@ class Screen2 extends StatelessWidget {
             primary: Colors.blue,
           ),
           child: Text('Go Back To Screen 1'),
+          // Todo 2: Navigator.pop - destory current screen and go back.
           onPressed: () {
             Navigator.pop(context);
           },
