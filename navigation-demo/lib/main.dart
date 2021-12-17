@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       //key = routes, : , value = expect a function as the value of the map - takes ‘context’ as a input and returns a widget
       //context: 현재 위젯의 위젯트리 상의 위치에 관한 정보를 담고 있는 변수.
       routes: {
+        //Screen0,1,2는 각파일 내의 클래스명
         '/': (context) => Screen0(),
         '/first': (context) => Screen1(),
         '/second': (context) => Screen2(),
