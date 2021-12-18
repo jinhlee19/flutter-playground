@@ -201,9 +201,12 @@ class _InputPageState extends State<InputPage> {
           BottomButton(
             buttonTitle: 'CALCULATE',
             onTap: () {
-              // Todo #2
+              // Todo #2 Starting to apply calculation from calcBrain.dart
               CalcBrain calc = CalcBrain(height: height, weight: weight);
-              // Navigator.pushNamed(context, '/result_page');
+
+              // 아래를 작성하기 전에 먼저 result page 에서 CalcBrain 값을 받을 수 있도록 세팅해야함. ㄱㄱ @todo 3
+              //
+              // Todo #4 apply properties and Method with inside of the NAvigator.push, MaterialPageRoute**
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -211,6 +214,8 @@ class _InputPageState extends State<InputPage> {
                     bmiResult: calc.calculateBMI(),
                     bmiResultText: calc.getResult(),
                     interpretation: calc.getInterpretation(),
+                    // Note: Option2 - 이게 외않돼?
+                    // Navigator.pushNamed(context, '/result_page');
                   ),
                 ),
               );

@@ -1,6 +1,6 @@
 import 'dart:math';
 
-// Todo #1
+// Todo #1 Creating CalcBrain
 class CalcBrain {
   CalcBrain({required this.height, required this.weight});
 
@@ -26,11 +26,13 @@ class CalcBrain {
 
   String getInterpretation() {
     if (_bmi >= 25) {
-      return '그만 먹어라 돼지야';
+      return 'You have a higer than normal body weight. Try to exercise more.';
     } else if (_bmi > 18.5) {
-      return '역시나 어중간한 인생.';
+      return 'You have a normal body weight. Good job!';
     } else {
-      return '많이 먹어라 멸치야';
+      return 'You have a lower than normal body weight. You can eat a bit more.';
     }
   }
 }
+
+// NOTE: We might save values in an array or a list to shorten code for 2 IF statements?

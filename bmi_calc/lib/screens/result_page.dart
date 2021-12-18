@@ -4,12 +4,14 @@ import 'package:bmi_calculator/components/reusable_card.dart';
 import 'package:flutter/material.dart';
 
 class ResultsPage extends StatelessWidget {
-  // Todo #3 오류참고  ****
+  // Todo #3 Result Page에서 값을 받을 수 있도록 세팅
+  // *** 오류참고 *** Dart Update Issue
   // ResultPage(
   //     {required this.bmiResult,
   //     required this.resultText,
   //     required this.interpretation});
 
+  // # 3-2 Constructor
   const ResultsPage(
       {Key? key,
       required this.bmiResult,
@@ -17,6 +19,7 @@ class ResultsPage extends StatelessWidget {
       required this.interpretation})
       : super(key: key);
 
+  // # 3-1 Properties
   final String bmiResult;
   final String bmiResultText;
   final String interpretation;
@@ -51,7 +54,7 @@ class ResultsPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    // Todo
+                    // Todo #5 - #4에서 보낸 부분을 받아내는 부분. sample text -> 계산된 값 받아오기.
                     Text(
                       bmiResultText.toUpperCase(),
                       style: kResultTextStyle,
@@ -62,7 +65,7 @@ class ResultsPage extends StatelessWidget {
                     ),
                     Text(
                       interpretation,
-                      // textAlign: TextAlign.center,
+                      textAlign: TextAlign.center,
                       style: kBodyTextStyle,
                     ),
                   ]),
