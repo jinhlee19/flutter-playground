@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ReusableCard extends StatelessWidget {
   final Color colour;
-  final Widget? cardChild; // from flearner
+  final Widget? cardChild; // from flearner require를 주기 싫을때 ?붙이는듯.
   final void Function()? onPressed;
 
   const ReusableCard(
