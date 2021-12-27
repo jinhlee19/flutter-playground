@@ -16,8 +16,15 @@ void task1() {
 }
 
 void task2() {
-  String result = 'task 2 data';
-  print('Task 2 complete');
+  Duration threeSeconds = Duration(seconds: 3);
+  // #1 sync 동시, 또는 순차적 처리
+  // sleep(threeSeconds);
+
+  // #2 async 비순차적인 처리. 동시에 일어나거나 바로 결과가 주어지지 않음.
+  Future.delayed(threeSeconds, () {
+    String result = 'task 2 data';
+    print('Task 2 complete');
+  });
 }
 
 void task3() {
