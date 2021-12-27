@@ -26,6 +26,23 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    String myMargin = 'abc';
+    try {
+      double myMarginAsADouble = double.parse(myMargin);
+      return Scaffold(
+        body: Container(
+          margin: EdgeInsets.all(myMarginAsADouble),
+          color: Colors.red,
+        ),
+      );
+    } catch (e) {
+      print(e);
+      return Scaffold(
+        body: Container(
+          margin: EdgeInsets.all(30),
+          color: Colors.red,
+        ),
+      );
+    }
   }
 }
