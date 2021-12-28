@@ -32,11 +32,22 @@ class _LoadingScreenState extends State<LoadingScreen> {
     // print(response.statusCode);
     if (response.statusCode == 200) {
       String data = response.body;
-      print(data);
-      var longitude = jsonDecode(data)['coord']['lon'];
-      print(longitude);
-      var weather = jsonDecode(data)['weather'][0]['description'];
-      print(weather);
+      // print(data);
+      // var longitude = jsonDecode(data)['coord']['lon'];
+      // print(longitude);
+      // var weather = jsonDecode(data)['weather'][0]['description'];
+      // print(weather);
+
+      // 처리 될때까지 데이터타입을 알수 없으므로 dynamic datatype으로 유지.
+      var decodeData = jsonDecode(data);
+
+      late double temp = decodeData['main']['temp'];
+      late int condition = decodeData['weather'][0]['id'];
+      late String cityName = decodeData['name'];
+
+      print(temp);
+      print(condition);
+      print(cityName);
     } else {
       print(response.statusCode);
     }
