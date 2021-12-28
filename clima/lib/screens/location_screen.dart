@@ -19,6 +19,9 @@ class _LocationScreenState extends State<LocationScreen> {
   // Todo 11-2-1
   late String weatherIcon;
   late String cityName;
+  // Todo 11-4 Emoji
+  late String weatherMessage;
+
   @override
   // Todo 10-3
   void initState() {
@@ -28,15 +31,18 @@ class _LocationScreenState extends State<LocationScreen> {
 
   // Todo 10-4
   void updateUI(dynamic weatherData) {
-    double temp = weatherData['main']['temp'];
-    temperature = temp.toInt();
-
-    // Todo 11-2
-    var condition = weatherData['weather'][0]['id'];
-    weatherIcon = weather.getWeatherIcon(condition);
-    print(weatherIcon);
-
-    cityName = weatherData['name'];
+    setState(() {
+      double temp = weatherData['main']['temp'];
+      temperature = temp.toInt();
+      // Todo 11-2
+      var condition = weatherData['weather'][0]['id'];
+      weatherIcon = weather.getWeatherIcon(condition);
+      print(weatherIcon);
+      // Todo 11-5 Emoji
+      weatherMessage = weather.getMessage(temperature);
+      print(weatherMessage);
+      cityName = weatherData['name'];
+    });
   }
 
   @override
@@ -86,7 +92,7 @@ class _LocationScreenState extends State<LocationScreen> {
                       style: kTempTextStyle,
                     ),
                     Text(
-                      // Todo 11-3
+                      // Todo 11-6
                       weatherIcon,
                       style: kConditionTextStyle,
                     ),
@@ -96,7 +102,8 @@ class _LocationScreenState extends State<LocationScreen> {
               Padding(
                 padding: EdgeInsets.only(right: 15.0),
                 child: Text(
-                  "It's 🍦 time in San Francisco!",
+                  // 11-
+                  '$weatherMessage in $cityName',
                   textAlign: TextAlign.right,
                   style: kMessageTextStyle,
                 ),
