@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:clima/services/location.dart';
 import 'package:http/http.dart' as http;
 
-const apiKey = '{APIKEY}';
+const apiKey = '{API_KEY}';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -18,9 +18,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
     super.initState();
-    print('initState initiated.');
     getLocation();
-    getData();
   }
 
   void getLocation() async {
@@ -32,7 +30,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 
   void getData() async {
-    const uri =
+    var uri =
         'https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey';
     http.Response response = await http.get(Uri.parse(uri));
 
