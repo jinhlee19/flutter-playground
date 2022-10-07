@@ -9,14 +9,13 @@ void main() {
 class Human {
   late double height;
   int age = 0;
-  class Human {
-    human(){}
-  }
+
   // 컨스트럭터가 dart 내에 내장되어 있어서 비워놓더라도 사용이 가능하다.
   Human({required double startingHeight}) {
     height = startingHeight;
   }
+
   void talk(String whatToSay) {
-    print(whatTosay);
+    print(whatToSay);
   }
 }
